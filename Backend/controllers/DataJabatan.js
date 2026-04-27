@@ -35,19 +35,19 @@ export const getDataJabatanByID = async (req, res) => {
     try {
         const response = await DataJabatan.findOne({
             attributes: [
-                'id','nama_jabatan', 'gaji_pokok', 'tj_transport', 'uang_makan'
+                'id', 'nama_jabatan', 'gaji_pokok', 'tj_transport', 'uang_makan'
             ],
             where: {
                 id: req.params.id
             }
         });
-        if(response){
+        if (response) {
             res.status(200).json(response);
-        }else{
-            res.status(404).json({msg: 'Data jabatan dengan ID tersebut tidak ditemukan'});
+        } else {
+            res.status(404).json({ msg: 'Data jabatan dengan ID tersebut tidak ditemukan' });
         }
     } catch (error) {
-        res.status(500).json({msg: error.message});
+        res.status(500).json({ msg: error.message });
     }
 }
 
@@ -56,6 +56,13 @@ export const createDataJabatan = async (req, res) => {
     const {
         id_jabatan, nama_jabatan, gaji_pokok, tj_transport, uang_makan
     } = req.body;
+
+
+    // LF-102 Validation
+    if (gaji_pokok <= 0 || tj_transport < 0 || uang_makan < 0) {
+        return res.status(400).json({ msg: "Salary must be positive" });
+    }
+
     try {
         if (req.hak_akses === "admin") {
             await DataJabatan.create({
@@ -94,6 +101,11 @@ export const updateDataJabatan = async (req, res) => {
         });
         if (!jabatan) return res.status(404).json({ msg: "Data tidak ditemukan" });
         const { nama_jabatan, gaji_pokok, tj_transport, uang_makan } = req.body;
+
+        //LF-102 Validation
+        if (gaji_pokok <= 0 || tj_transport < 0 || uang_makan < 0) {
+            return res.status(400).json({ msg: "Salary must be positive" });
+        }
         if (req.hak_akses === "admin") {
             await DataJabatan.update({
                 nama_jabatan, gaji_pokok, tj_transport, uang_makan

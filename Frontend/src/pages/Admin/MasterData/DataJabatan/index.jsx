@@ -200,14 +200,17 @@ const DataJabatan = () => {
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                             <p className='text-black dark:text-white'>{data.nama_jabatan}</p>
                                         </td>
+                                        // LF-102 Validation
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>Rp. {data.gaji_pokok}</p>
+                                            <p className='text-black dark:text-white'>Rp. {Math.max(0, data.gaji_pokok)}</p>
                                         </td>
+                                        // LF-102 Validation
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>Rp. {data.tj_transport}</p>
+                                            <p className='text-black dark:text-white'>Rp. {Math.max(0, data.tj_transport)}</p>
                                         </td>
+                                        // LF-102 Validation
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>Rp. {data.uang_makan}</p>
+                                            <p className='text-black dark:text-white'>Rp. {Math.max(0, data.uang_makan)}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                             <div className='flex items-center space-x-3.5'>

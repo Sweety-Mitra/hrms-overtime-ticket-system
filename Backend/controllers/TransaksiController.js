@@ -447,11 +447,17 @@ export const getDataGajiPegawai = async () => {
       const potongan = potongan_pegawai.find(
         (potongan) => potongan.nama_pegawai === pegawai.nama_pegawai
       );
+
+      // Salary validation (LF-102)
+      if (pegawai.gaji_pokok <= 0 || pegawai.tj_transport < 0 || pegawai.uang_makan < 0) {
+        throw new Error("Invalid salary values: salary must be positive");
+      }
+
       const total_gaji =
-      (pegawai.gaji_pokok +
-      pegawai.tj_transport +
-      pegawai.uang_makan -
-      (potongan ? potongan.total_potongan : 0)).toLocaleString();
+        (pegawai.gaji_pokok +
+          pegawai.tj_transport +
+          pegawai.uang_makan -
+          (potongan ? potongan.total_potongan : 0)).toLocaleString();
 
       return {
         tahun: potongan ? potongan.tahun : kehadiran ? kehadiran.tahun : 0,
