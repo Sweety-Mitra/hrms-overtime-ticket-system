@@ -153,92 +153,96 @@ const DataGajiPegawai = () => {
       <Breadcrumb pageName="Data Gaji" />
 
       <div className="mt-6 rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
-        <div className="max-w-full overflow-x-auto py-4">
-          <table className="w-full table-auto">
-            <thead>
-              <tr className="bg-gray-2 text-left dark:bg-meta-4">
-                <th className="px-4 py-4 font-medium text-black dark:text-white">
-                  No
-                </th>
-                <th className="px-4 py-4 font-medium text-black dark:text-white">
-                  Bulan/Tahun
-                </th>
-                <th className="px-4 py-4 font-medium text-black dark:text-white">
-                  Gaji Pokok
-                </th>
-                <th className="px-4 py-4 font-medium text-black dark:text-white">
-                  Tunjangan Transportasi
-                </th>
-                <th className="px-4 py-4 font-medium text-black dark:text-white">
-                  Uang Makan
-                </th>
-                <th className="px-4 py-4 font-medium text-black dark:text-white">
-                  Potongan
-                </th>
-                <th className="px-4 py-4 font-medium text-black dark:text-white">
-                  Total Gaji
-                </th>
-                <th className="px-4 py-4 font-medium text-black dark:text-white">
-                  Cetak Slip
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {dataGajiPegawai
-                .slice(startIndex, endIndex)
-                .map((data, index) => {
-                  return (
-                    <tr key={data.id}>
-                      <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                        <p className="text-center text-black dark:text-white">
-                          {startIndex + index + 1}
-                        </p>
-                      </td>
-                      <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                        <p className="text-black dark:text-white">
-                          {data.bulan} / {data.tahun}
-                        </p>
-                      </td>
-                      <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                        <p className="text-black dark:text-white">
-                          Rp. {data.gaji_pokok}
-                        </p>
-                      </td>
-                      <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                        <p className="text-black dark:text-white">
-                          Rp. {data.tj_transport}
-                        </p>
-                      </td>
-                      <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                        <p className="text-black dark:text-white">
-                          Rp. {data.uang_makan}
-                        </p>
-                      </td>
-                      <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                        <p className="text-black dark:text-white">
-                          Rp. {data.potongan}
-                        </p>
-                      </td>
-                      <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                        <p className="text-black dark:text-white">
-                          Rp. {data.total}
-                        </p>
-                      </td>
-                      <td className="border-b border-[#eee] px-4 py-5 text-center dark:border-strokedark">
-                        <div className="items-center ">
-                          <button className="hover:text-black">
-                            <TfiPrinter
-                              onClick={onSubmitPrint}
-                              className="text-xl text-primary hover:text-black dark:hover:text-white"
-                            />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
+        <div className="w-full overflow-x-auto">
+          
+          //LF-105 (Mobile fix)
+          <div className="min-w-[900px] py-4">
+            <table className="w-full table-auto">
+              <thead>
+                <tr className="bg-gray-2 text-left dark:bg-meta-4">
+                  <th className="px-4 py-4 font-medium text-black dark:text-white">
+                    No
+                  </th>
+                  <th className="px-4 py-4 font-medium text-black dark:text-white">
+                    Bulan/Tahun
+                  </th>
+                  <th className="px-4 py-4 font-medium text-black dark:text-white">
+                    Gaji Pokok
+                  </th>
+                  <th className="px-4 py-4 font-medium text-black dark:text-white">
+                    Tunjangan Transportasi
+                  </th>
+                  <th className="px-4 py-4 font-medium text-black dark:text-white">
+                    Uang Makan
+                  </th>
+                  <th className="px-4 py-4 font-medium text-black dark:text-white">
+                    Potongan
+                  </th>
+                  <th className="px-4 py-4 font-medium text-black dark:text-white">
+                    Total Gaji
+                  </th>
+                  <th className="px-4 py-4 font-medium text-black dark:text-white">
+                    Cetak Slip
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {dataGajiPegawai
+                  .slice(startIndex, endIndex)
+                  .map((data, index) => {
+                    return (
+                      <tr key={data.id}>
+                        <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                          <p className="text-center text-black dark:text-white">
+                            {startIndex + index + 1}
+                          </p>
+                        </td>
+                        <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                          <p className="text-black dark:text-white">
+                            {data.bulan} / {data.tahun}
+                          </p>
+                        </td>
+                        <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                          <p className="text-black dark:text-white">
+                            Rp. {data.gaji_pokok}
+                          </p>
+                        </td>
+                        <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                          <p className="text-black dark:text-white">
+                            Rp. {data.tj_transport}
+                          </p>
+                        </td>
+                        <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                          <p className="text-black dark:text-white">
+                            Rp. {data.uang_makan}
+                          </p>
+                        </td>
+                        <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                          <p className="text-black dark:text-white">
+                            Rp. {data.potongan}
+                          </p>
+                        </td>
+                        <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                          <p className="text-black dark:text-white">
+                            Rp. {data.total}
+                          </p>
+                        </td>
+                        <td className="border-b border-[#eee] px-4 py-5 text-center dark:border-strokedark">
+                          <div className="items-center ">
+                            <button className="hover:text-black">
+                              <TfiPrinter
+                                onClick={onSubmitPrint}
+                                className="text-xl text-primary hover:text-black dark:hover:text-white"
+                              />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div className="mt-4 flex flex-col items-center justify-between md:flex-row md:justify-between">
