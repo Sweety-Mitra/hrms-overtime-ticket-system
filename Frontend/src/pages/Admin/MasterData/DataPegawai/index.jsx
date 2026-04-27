@@ -144,6 +144,30 @@ const DataPegawai = () => {
         return items;
     };
 
+    // LF-104 CSV Export
+    const downloadCSV = () => {
+        const headers = ["NIK", "Nama", "Jabatan", "Status"];
+
+        const rows = dataPegawai.map((emp) => [
+            emp.nik,
+            emp.nama_pegawai,
+            emp.jabatan,
+            emp.status,
+        ]);
+
+        const csvContent =
+            "data:text/csv;charset=utf-8," +
+            [headers, ...rows].map((e) => e.join(",")).join("\n");
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "pegawai.csv");
+        document.body.appendChild(link);
+        link.click();
+    };
+
     return (
         <Layout>
             <Breadcrumb pageName="Data Pegawai" />
@@ -155,6 +179,14 @@ const DataPegawai = () => {
                     </span>
                 </ButtonOne>
             </Link>
+            
+            // LF-104 CSV Export
+            <button
+                onClick={downloadCSV}
+                className="ml-4 bg-green-500 text-white px-4 py-2 rounded"
+            >
+                Download CSV
+            </button>
             <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 mt-6">
                 <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
                     <div className="relative flex-1 md:mr-2 mb-4 md:mb-0">
