@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, store } from './config';
 import { Provider } from 'react-redux';
+import Overtime from "./pages/Overtime";
 
 function App() {
   const [loading, setLoading] = useState(true)

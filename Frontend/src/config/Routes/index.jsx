@@ -6,6 +6,7 @@ import About from '../../pages/About';
 import Contact from '../../pages/Contact';
 import Login from '../../pages/Login';
 import Dashboard from '../../pages/Dashboard';
+import Overtime from "../../pages/Overtime";
 import {
   FormAddDataJabatan,
   FormEditDataJabatan,
@@ -44,6 +45,7 @@ const AppRoutes = () => {
       <Route path='/kontak' element={<Contact />} />
       <Route path='/login' element={<Login />} />
       <Route path='/dashboard' element={<Dashboard />} />
+      <Route path="/overtime" element={<Overtime />} />
 
       {/* Route Admin */}
       {/* Master Data Admin */}
